@@ -4,13 +4,20 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS = main
+SRCS = main\
+		tools/ft_lstnew\
+		tools/ft_strdup\
+		tools/ft_strlen\
+		tools/ft_strlcpy\
+		tools/ft_lstadd_back\
+		tools/ft_lstadd_front\
+		tools/ft_lstlast
 
 OBJ = $(SRCS:=.o)
 
 all: $(NAME)
 
-%.o:%.c push_swap.h
+%.o:%.c inc/push_swap.h
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME):$(OBJ)
