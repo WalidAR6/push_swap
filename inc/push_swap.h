@@ -10,6 +10,13 @@ typedef struct s_list
     struct  s_list *next;
 }               t_list;
 
+typedef struct s_vars
+{
+    int *stack1;
+    int *stack2;
+    t_list  *list;
+}           t_vars;
+
 t_list	*ft_lstnew(int content);
 char	*ft_strdup(const char *str);
 size_t	ft_strlen(const char *str);
