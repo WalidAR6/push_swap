@@ -11,7 +11,8 @@ SRCS = main\
 		tools/ft_strlcpy\
 		tools/ft_lstadd_back\
 		tools/ft_lstadd_front\
-		tools/ft_lstlast
+		tools/ft_lstlast\
+		tools/ft_atoi
 
 OBJ = $(SRCS:=.o)
 
