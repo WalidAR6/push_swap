@@ -1,5 +1,5 @@
 #include "inc/push_swap.h"
-
+#include <limits.h>
 
 
 void    fill_stack(t_vars *vars, char *arg, int i)
