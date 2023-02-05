@@ -7,6 +7,11 @@ void    fill_stack(t_vars *vars, char *arg, int i)
     int l;
 
     l = ft_atoi(arg);
+    if (l == -1)
+    {
+        write(2, "Error int limits\n", 17);
+        exit(1);
+    }
     vars->stack_a[i] = l;
 }
 

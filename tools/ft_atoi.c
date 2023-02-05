@@ -16,7 +16,7 @@ int	ft_atoi(const char *str)
 {
 	int		i;
 	int		sign;
-	int		res;
+	ssize_t		res;
 
 	i = 0;
 	sign = 1;
@@ -34,5 +34,7 @@ int	ft_atoi(const char *str)
 		res = res * 10 + str[i] - '0';
 		i++;
 	}
-	return (res * sign);
+	if (res > 2147483647 || res < -2147483648)
+		return (-1);
+	return ((int)res * sign);
 }
