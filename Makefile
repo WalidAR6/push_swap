@@ -18,8 +18,9 @@ SRCS = main\
 		tools/ft_strncmp\
 		tools/ft_strcmp\
 		tools/ft_atoi\
-		fill_list
-		# sa
+		fill_list\
+		tools/ft_strjoin_sep\
+		tools/ft_split
 
 OBJ = $(SRCS:=.o)
 
