@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:41:48 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/05 22:19:00 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:40:58 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,15 @@ void	ft_isdigit(char *str)
     i = 0;
     while (str[i])
     {
-        if (!(str[i] >= 48 && str[i] <= 57))
+        if (str[i] == '-' || str[i] == '+')
+        {
+            if (str[i + 1] == '-' || str[i + 1] == '+')
+            {
+                write(2, "Error, you enter a wrong elements in your args\n", 48);
+                exit(1);
+            }
+        }
+        else if(!(str[i] >= 48 && str[i] <= 57) && str[i] != '-' && str[i] != '+')
         {
             write(2, "Error, you enter a wrong elements in your args\n", 48);
             exit(1);

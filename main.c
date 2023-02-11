@@ -6,30 +6,25 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/06 18:55:27 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:13:44 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/push_swap.h"
 
-void    fill_stack(t_vars *vars, char *arg, int i)
+void    fill_stack(t_vars *vars, char *arg)
 {
     int l;
 
     l = ft_atoi(arg);
-    if (l == -1)
-    {
-        write(2, "Error you passed the int limit\n", 17);
-        exit(1);
-    }
-    vars->stack_a[i] = l;
+    fill_list(vars, l);
 }
 
 void    is_duplicated(char **str)
 {
     int i;
     int j;
-    
+
     i = 1;
     while (str[i])
     {
@@ -52,57 +47,22 @@ int main(int ac, char **av)
 {
     t_vars  vars;
     int     i;
-    int     j;
 
     i = 0;
-    j = 0;
     if (ac > 2)
     {
-        vars.stack_a = (int *)malloc(sizeof(int) * (ac - 1));
-        if (!vars.stack_a)
-            exit(1);
         is_duplicated(av);
+        vars.counter = 0;
         while (av[++i])
         {
             ft_isdigit(av[i]);
-            fill_stack(&vars, av[i], j);
-            j++;
+            fill_stack(&vars, av[i]);
         }
-        fill_list(&vars, av);
-        i = 0;
-        while (vars.stack_a[i])
+        // sa(&vars);
+        while (vars.stack_a)
         {
-            printf("%d\n", vars.stack_a[i]);
-            i++;
+            printf("%d\n", vars.stack_a->content);
+            vars.stack_a = vars.stack_a->next;
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-    // t_list *p;
-    // t_list *m;
-    // t_list *q;
-    // int i = 1;
-    // (void)ac;
-    // p = ft_lstnew(av[1]);
-    // m = p;
-    // while (av[++i])
-    // {
-    //     q = ft_lstnew(av[i]);
-    //     ft_lstadd_back(&p, q);
-    // }
-    // while (m)
-    // {
-    //     printf("%s\n", m->content);
-    //     m = m->next;
-    // }

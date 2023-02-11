@@ -19,14 +19,14 @@ SRCS = main\
 		tools/ft_strcmp\
 		tools/ft_atoi\
 		fill_list
-		sa
+		# sa
 
 OBJ = $(SRCS:=.o)
 
 all: $(NAME)
 
 %.o:%.c inc/push_swap.h
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@ -g
 
 $(NAME):$(OBJ)
 	$(CC) $(OBJ) -o $(NAME)

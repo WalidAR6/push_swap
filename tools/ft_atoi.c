@@ -6,11 +6,17 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:27:15 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/06 15:12:22 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:16:30 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+void	print_err()
+{
+	write(2, "Error you passed the int limit\n", 32);
+    exit(1);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -35,6 +41,6 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	if (res * sign > INT_MAX || res * sign < INT_MIN)
-		return (-1);
+		print_err();
 	return ((int)res * sign);
 }

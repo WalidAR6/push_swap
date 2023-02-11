@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/06 18:54:57 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:30:00 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ typedef struct s_list
 
 typedef struct s_vars
 {
-    int     *stack_a;
+    t_list     *stack_a;
+    int         counter;
     int     *stack_b;
-    t_list  *list;
 }           t_vars;
 
 t_list	*ft_lstnew(int content);
@@ -45,6 +45,6 @@ char	*ft_strstr(const char *str, const char *look);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 int     ft_strcmp(const char *s1, const char *s2);
 void    sa(t_vars *vars);
-void    fill_list(t_vars *vars, char **str);
+void    fill_list(t_vars *vars, int l);
 
 #endif
