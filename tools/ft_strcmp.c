@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 18:05:06 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/05 22:59:03 by waraissi         ###   ########.fr       */
+/*   Created: 2023/01/21 01:43:44 by waraissi          #+#    #+#             */
+/*   Updated: 2023/02/06 15:54:10 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] != '\0')
-	{
+	while (s1[i] && s2[i] && (s1[i] == s2[i]))
 		i++;
-	}
-	return (i);
+	return (s1[i] - s2[i]);
 }

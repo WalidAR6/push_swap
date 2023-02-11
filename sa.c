@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   sa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 18:05:06 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/05 22:59:03 by waraissi         ###   ########.fr       */
+/*   Created: 2023/02/06 16:56:23 by waraissi          #+#    #+#             */
+/*   Updated: 2023/02/06 17:58:59 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "inc/push_swap.h"
 
-size_t	ft_strlen(const char *str)
+void    sa(t_vars *vars)
 {
-	size_t	i;
+    int tmp;
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+    tmp = vars->stack_a[0];
+    vars->stack_a[0] = vars->stack_a[1];
+    vars->stack_a[1] = tmp;
 }

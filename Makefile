@@ -12,7 +12,14 @@ SRCS = main\
 		tools/ft_lstadd_back\
 		tools/ft_lstadd_front\
 		tools/ft_lstlast\
-		tools/ft_atoi
+		tools/ft_isdigit\
+		tools/ft_strnstr\
+		tools/ft_strstr\
+		tools/ft_strncmp\
+		tools/ft_strcmp\
+		tools/ft_atoi\
+		fill_list
+		sa
 
 OBJ = $(SRCS:=.o)
 

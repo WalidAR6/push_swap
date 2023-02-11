@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   fill_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 18:05:06 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/05 22:59:03 by waraissi         ###   ########.fr       */
+/*   Created: 2023/02/06 18:07:32 by waraissi          #+#    #+#             */
+/*   Updated: 2023/02/06 18:56:25 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "inc/push_swap.h"
 
-size_t	ft_strlen(const char *str)
+void    fill_list(t_vars *vars, char **str)
 {
-	size_t	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+    t_list *p;
+    t_list *m;
+    t_list *q;
+    int i = 1;
+    p = ft_lstnew(str[1]);
+    m = p;
+    while (str[++i])
+    {
+        q = ft_lstnew(str[i]);
+        ft_lstadd_back(&p, q);
+    }
 }
