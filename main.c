@@ -6,40 +6,24 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/11 21:21:46 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/12 21:25:07 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/push_swap.h"
 
-void    fill_stack(t_vars *vars, char *arg)
+void    fill_stack(t_vars *vars)
 {
     int l;
-
-    l = ft_atoi(arg);
-    fill_list(vars, l);
-}
-
-void    is_duplicated(char **str)
-{
     int i;
-    int j;
 
-    i = 1;
-    while (str[i])
+    i = 0;
+    while (vars->s_args[i])
     {
-        j = i + 1;
-        while (str[j])
-        {
-            if (!ft_strcmp(str[i], str[j]))
-            {
-                write(2, "duplicated", 11);
-                exit(1);
-            }
-            j++;
-        }
+        l = ft_atoi(vars->s_args[i]);
+        fill_list(vars, l);
         i++;
-    }
+    }   
 }
 
 char    **join_args(t_vars *vars, char **av)
@@ -54,6 +38,40 @@ char    **join_args(t_vars *vars, char **av)
     return (ft_split(vars->args, ' '));
 }
 
+void    validate_args(t_vars *vars)
+{
+    int i;
+
+    i = 0;
+    while (vars->s_args[i])
+    {
+        ft_isdigit(vars->s_args[i]);
+        i++;
+    }
+}
+
+void    dup_num(t_vars *vars)
+{
+    t_list *tmp;
+    t_list  *head;
+
+    head = vars->stack_a;
+    while (head)
+    {
+        tmp = head->next;
+        while (tmp)
+        {
+            if (head->content == tmp->content)
+            {
+                write(2, "duplicated", 11);
+                exit(1);
+            }
+            tmp = tmp->next;
+        }
+        head = head->next;
+    }
+}
+
 int main(int ac, char **av)
 {
     t_vars  vars;
@@ -61,11 +79,13 @@ int main(int ac, char **av)
     if (ac > 2)
     {
         vars.s_args = join_args(&vars, av);
-        int i = 0;
-        while (vars.s_args[i])
+        validate_args(&vars);
+        fill_stack(&vars);
+        dup_num(&vars);
+        while (vars.stack_a)
         {
-            printf("%s\n", vars.s_args[i]);
-            i++;
+            printf("%d\n",vars.stack_a->content);
+            vars.stack_a = vars.stack_a->next;
         }
     }
 }
