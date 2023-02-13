@@ -29,7 +29,10 @@ SRCS = main\
 		pa\
 		rra\
 		rrb\
-		rrr
+		rrr\
+		ra\
+		rb\
+		rr
 
 OBJ = $(SRCS:=.o)
 

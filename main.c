@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/13 17:08:38 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:44:54 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int main(int ac, char **av)
         if (ft_lstsize(vars.stack_a) == 1)
             return (0);
         dup_num(&vars);
+        ra(&vars.stack_a);
         printf("-----------stack_a-------------\n");
         while (vars.stack_a)
         {

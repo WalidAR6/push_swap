@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/13 17:00:45 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:58:09 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@ void    rra(t_list **stack_a);
 void    rrb(t_list **stack_b);
 t_list  *before_last(t_list *list);
 void    rrr(t_list **stack_a, t_list **stack_b);
+void    ra(t_list **stack_a);
+void    rb(t_list **stack_b);
+void    rr(t_list **stack_a, t_list **stack_b);
 
 #endif
