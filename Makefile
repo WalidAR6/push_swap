@@ -20,7 +20,16 @@ SRCS = main\
 		tools/ft_atoi\
 		fill_list\
 		tools/ft_strjoin_sep\
-		tools/ft_split
+		tools/ft_split\
+		tools/ft_lstsize\
+		sa\
+		sb\
+		ss\
+		pb\
+		pa\
+		rra\
+		rrb\
+		rrr
 
 OBJ = $(SRCS:=.o)
 

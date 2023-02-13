@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 16:56:23 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/13 11:34:49 by waraissi         ###   ########.fr       */
+/*   Created: 2023/02/13 16:50:33 by waraissi          #+#    #+#             */
+/*   Updated: 2023/02/13 17:00:32 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/push_swap.h"
 
-void    sa(t_list **stack_a)
+void    rrr(t_list **stack_a, t_list **stack_b)
 {
-    t_list  *tmp;
-    t_list  *sec;
-    t_list  *head;
-
-    if (ft_lstsize((*stack_a)) <= 1)
-        return ;
-    head = (*stack_a);
-    sec = head->next;
-    tmp = head;
-    head->next = sec->next;
-    sec->next = tmp;
-    (*stack_a) = sec;
+    rra(stack_a);
+    rrb(stack_b);
 }

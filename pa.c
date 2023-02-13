@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   pa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 16:56:23 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/13 11:34:49 by waraissi         ###   ########.fr       */
+/*   Created: 2023/02/13 13:30:36 by waraissi          #+#    #+#             */
+/*   Updated: 2023/02/13 13:39:57 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/push_swap.h"
 
-void    sa(t_list **stack_a)
+void    pa(t_list **stack_a, t_list **stack_b)
 {
-    t_list  *tmp;
-    t_list  *sec;
     t_list  *head;
-
-    if (ft_lstsize((*stack_a)) <= 1)
+    t_list  *tmp;
+    t_list  *tmp_2;
+    
+    if (!(*stack_b))
         return ;
-    head = (*stack_a);
-    sec = head->next;
-    tmp = head;
-    head->next = sec->next;
-    sec->next = tmp;
-    (*stack_a) = sec;
+    if(!(*stack_a))
+    {
+        tmp = (*stack_b);
+        head = tmp->next;
+        (*stack_a) = tmp;
+        (*stack_a)->next = NULL;
+        (*stack_b) = head;
+    }
+    else
+    {
+        tmp = (*stack_b);
+        head = tmp->next;
+        tmp_2 = (*stack_a);
+        tmp->next = tmp_2;
+        (*stack_b) = head;
+        (*stack_a) = tmp;
+    }
 }
