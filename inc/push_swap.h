@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/13 17:58:09 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:42:33 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void    rrr(t_list **stack_a, t_list **stack_b);
 void    ra(t_list **stack_a);
 void    rb(t_list **stack_b);
 void    rr(t_list **stack_a, t_list **stack_b);
+void    ft_sorting(t_vars *vars);
 
 #endif
