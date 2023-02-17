@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:41:40 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/13 16:58:22 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:04:43 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void    rra(t_list **stack_a)
     lst->next = head;
     tmp->next = NULL;
     (*stack_a) = lst;
+    write(1, "rra\n", 4);
 }

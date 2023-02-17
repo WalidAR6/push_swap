@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:30:36 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/13 13:39:57 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:02:06 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void    pa(t_list **stack_a, t_list **stack_b)
         (*stack_b) = head;
         (*stack_a) = tmp;
     }
+    write(1, "pa\n", 3);
 }
