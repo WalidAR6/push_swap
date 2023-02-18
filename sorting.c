@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:27:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/18 16:38:23 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:08:49 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,6 @@ int    low_elem(t_list *vars)
     return (min);
         
 }
-void    sort_more_five(t_vars *vars)
-{
-    (void)vars;
-}
-
-void    sort_three(t_vars *vars)
-{   
-    t_list  *head;
-
-    head = vars->stack_a;
-    if (head->content > head->next->content
-            && head->next->content < head->next->next->content)
-        sa(&vars->stack_a);
-    else if (head->content > head->next->content
-                && head->next->content > head->next->next->content)
-    {
-        sa(&vars->stack_a);
-        rra(&vars->stack_a);
-    }
-    else if (head->content < head->next->content
-                && head->next->content > head->next->next->content)
-    {
-        sa(&vars->stack_a);
-        ra(&vars->stack_a);
-    }
-}
 
 int     min_pos(t_list  *vars)
 {
@@ -86,6 +60,59 @@ int     min_pos(t_list  *vars)
     return (pos);
 }
 
+int     max_pos(t_list  *vars)
+{
+    t_list  *head;
+    int max;
+    int pos;
+
+    pos = 0;
+    head = vars;
+    max = lar_elem(head);
+    while (head)
+    {
+        if (head->content == max)
+            break;
+        pos++;
+        head = head->next;
+    }
+    return (pos);
+}
+
+void    sort_more_five(t_vars *vars)
+{
+    (void)vars;
+}
+
+void    sort_three(t_vars *vars)
+{   
+    t_list  *head;
+    int max;
+    int min;
+
+    head = vars->stack_a;
+    max = max_pos(head);
+    min = min_pos(head);
+    if (min == 1 && max == 2)
+        sa(&vars->stack_a);
+    else if (min == 2 && max == 1)
+        rra(&vars->stack_a);
+    else if (min == 2 && max == 0)
+    {
+        ra(&vars->stack_a);
+        sa(&vars->stack_a);
+    }
+    else if (min == 0 && max == 1)
+    {
+        rra(&vars->stack_a);
+        sa(&vars->stack_a);
+    }
+    else if ((min == 2 && max == 0) || (min == 1 && max == 0))
+        ra(&vars->stack_a);
+        
+}
+
+
 void    sort_till_five(t_vars *vars)
 {
     t_list  *head;
@@ -100,7 +127,7 @@ void    sort_till_five(t_vars *vars)
         if (min_pos(head) > ft_lstsize(head) / 2)
         {
             if (min_pos(head) == ft_lstsize(head) - 1)
-                ra(&vars->stack_a);
+                rra(&vars->stack_a);
             else if (min_pos(head) == ft_lstsize(head) - 2)
             {
                 rra(&vars->stack_a);
@@ -122,6 +149,7 @@ void    sort_till_five(t_vars *vars)
         i++;
     }
     sort_three(vars);
+    
     pa(&vars->stack_a,&vars->stack_b);
     pa(&vars->stack_a,&vars->stack_b);
 }
