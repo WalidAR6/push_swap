@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/16 17:42:33 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/21 01:50:53 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ typedef struct s_list
 
 typedef struct s_vars
 {
-    t_list     *stack_a;
-    t_list     *stack_b;
+    t_list      *stack_a;
+    t_list      *stack_b;
     int         counter;
     char        *args;
     char        **s_args;
+    int         *tab;
+    int         *lis;
+    int         *pos;
+    int         size;
 }           t_vars;
 
 t_list	*ft_lstnew(int content);
@@ -63,5 +67,12 @@ void    ra(t_list **stack_a);
 void    rb(t_list **stack_b);
 void    rr(t_list **stack_a, t_list **stack_b);
 void    ft_sorting(t_vars *vars);
+void    sort_till_five(t_vars *vars);
+void    sort_three(t_vars *vars);
+void    sort_more_five(t_vars *vars);
+int     max_pos(t_list  *vars);
+int     min_pos(t_list  *vars);
+int    low_elem(t_list *vars);
+int    lar_elem(t_list *vars);
 
 #endif

@@ -33,7 +33,8 @@ SRCS = main\
 		ra\
 		rb\
 		rr\
-		sorting
+		sorting\
+		sorting_2
 
 OBJ = $(SRCS:=.o)
 

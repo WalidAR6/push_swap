@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:27:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/18 19:08:49 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/21 01:39:08 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,13 @@ int     max_pos(t_list  *vars)
     return (pos);
 }
 
-void    sort_more_five(t_vars *vars)
-{
-    (void)vars;
-}
-
 void    sort_three(t_vars *vars)
-{   
-    t_list  *head;
+{
     int max;
     int min;
 
-    head = vars->stack_a;
-    max = max_pos(head);
-    min = min_pos(head);
+    max = max_pos(vars->stack_a);
+    min = min_pos(vars->stack_a);
     if (min == 1 && max == 2)
         sa(&vars->stack_a);
     else if (min == 2 && max == 1)
@@ -109,7 +102,6 @@ void    sort_three(t_vars *vars)
     }
     else if ((min == 2 && max == 0) || (min == 1 && max == 0))
         ra(&vars->stack_a);
-        
 }
 
 
@@ -149,7 +141,6 @@ void    sort_till_five(t_vars *vars)
         i++;
     }
     sort_three(vars);
-    
     pa(&vars->stack_a,&vars->stack_b);
     pa(&vars->stack_a,&vars->stack_b);
 }
