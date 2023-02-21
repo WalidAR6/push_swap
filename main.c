@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/21 01:37:20 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:45:55 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,17 +114,17 @@ int main(int ac, char **av)
             return (0);
         dup_num(&vars);
         ft_sorting(&vars);
-        // printf("-----------stack_a-------------\n");
-        // while (vars.stack_a)
-        // {
-        //     printf("%d\n",vars.stack_a->content);
-        //     vars.stack_a = vars.stack_a->next;
-        // }
-        // printf("-----------stack_b-------------\n");
-        // while (vars.stack_b)
-        // {
-        //     printf("%d\n",vars.stack_b->content);
-        //     vars.stack_b = vars.stack_b->next;
-        // }
+        printf("-----------stack_a-------------\n");
+        while (vars.stack_a)
+        {
+            printf("%d\n",vars.stack_a->content);
+            vars.stack_a = vars.stack_a->next;
+        }
+        printf("-----------stack_b-------------\n");
+        while (vars.stack_b)
+        {
+            printf("%d\n",vars.stack_b->content);
+            vars.stack_b = vars.stack_b->next;
+        }
     }
 }

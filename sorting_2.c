@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/21 01:53:05 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/21 19:48:31 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void     list_element(t_vars *vars)
         return ;
     fill_tab(vars);
 }
+
 void    pos_lis(t_vars *vars)
 {
     int i;
@@ -53,20 +54,161 @@ void    pos_lis(t_vars *vars)
     }
 }
 
+void    fill_lis(t_vars *vars)
+{
+    int i;
+    int j;
+    
+    i = 1;
+    while (i < vars->size)
+    {
+        j = 0;
+        while (j < i)
+        {
+            if (vars->tab[j] < vars->tab[i])
+            {
+                if (vars->lis[j] + 1 > vars->lis[i])
+                {
+                    vars->lis[i] = vars->lis[j] + 1;
+                    vars->pos[i] = j;
+                }
+            }
+            j++;
+        }
+        i++;
+    }
+}
+
+int get_lis(int *arr, int size)
+{
+    int i = 0;
+    int max = arr[i];
+
+    while (i < size)
+    {
+        if (arr[i] < arr[i + 1] && arr[i + 1] > max)
+            max = arr[i + 1];
+        i++;
+    }
+    return (max);
+}
+
+int get_li_pos(int *arr, int size)
+{
+    int i;
+
+    i = 0;
+    while (i < size)
+    {
+        if (arr[i] == get_lis(arr, size))
+            break;
+        i++;
+    }
+    return (i);
+}
+
+int get_next_pos(int *arr, int num, int size)
+{
+    int i;
+
+    i = 0;
+    while (i < size)
+    {
+        if (arr[i] == num)
+            break;
+        i++;
+    }
+    return (i);
+}
+
+void    fill_res(t_vars *vars)
+{
+    int i;
+    int l_po;
+    int p;
+
+    i = 1;
+    vars->li = get_lis(vars->lis, vars->size);
+    vars->res = (int *) malloc(sizeof(int) * vars->li);
+    if (!vars->res)
+        return ;
+    vars->li_pos = get_li_pos(vars->lis, vars->size);
+    vars->res[0] = vars->tab[vars->li_pos];
+    l_po = vars->pos[vars->li_pos];
+    while (i < vars->li)
+    {
+        vars->res[i] = vars->tab[l_po];
+        p = get_next_pos(vars->tab, vars->tab[l_po], vars->size);
+        l_po = vars->pos[p];
+        i++;
+    }
+}
+
 void    find_lis(t_vars *vars)
 {
     pos_lis(vars);
+    fill_lis(vars);
+    fill_res(vars);
+}
+
+int     is_existe(t_vars *vars, int n, int *arr)
+{
+    int i;
+
+    i = 0;
+    while (i < vars->li)
+    {
+        if (arr[i] == n)
+            return (1);
+        i++;
+    }
+    return (0);
+}
+
+void    start_sorting(t_vars *vars)
+{
+    t_list  *head;
+    int     j;
+
+    j = 0;
+    head = vars->stack_a;
+    while (j < vars->size)
+    {
+        if (is_existe(vars, head->content, vars->res))
+            ra(&vars->stack_a);
+        else
+            pb(&vars->stack_a, &vars->stack_b);
+        head = vars->stack_a;
+        j++;
+    }
+}
+
+void    min_to_head(t_vars *vars)
+{
+    t_list *head;
+    int i;
+
+    i = 0;
+    head = vars->stack_a;
+    while (i <= vars->size / 2)
+    {
+        if (min_pos(head) == 0)
+            break;
+        if (min_pos(head) > vars->size / 2)
+            rra(&vars->stack_a);
+        if (min_pos(head) <= vars->size / 2)
+            ra(&vars->stack_a);
+        head = vars->stack_a;
+        i++;   
+    }
+    
 }
 
 void    sort_more_five(t_vars *vars)
 {
     vars->size = ft_lstsize(vars->stack_a);    
+    min_to_head(vars);
     list_element(vars);
     find_lis(vars);
-//     int i = 0;
-//     while (i < ft_lstsize(vars->stack_a))
-//     {
-//         printf("%d\n",vars->pos[i]);
-//         i++;
-//     }
-// }
+    start_sorting(vars);
+}
