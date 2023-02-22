@@ -19,21 +19,24 @@ void find_lis(int *arr, int *lis, int *pos)
     int i;
     int j;
 
-    i = 1;
-    while (i < 11)
+    i = 0;
+    while (i < 7)
     {
-        j = 0;
-        while (j < i)
+        if (i + 1 == 7)
+            j = 0;
+        else
+            j = i + 1;
+        int tmp = arr[i];
+        while (j <= 7 && arr[i] != arr[j])
         {
-            if (arr[j] < arr[i])
+            if (tmp < arr[j])
             {
-                if (lis[j] + 1 > lis[i])
-                {
-                    lis[i] = lis[j] + 1;
-                    pos[i] = j;
-                }
+                lis[i] = lis[i] + 1;
+                tmp = arr[j];
             }
             j++;
+            if (j == 7)
+                j = 0;
         }
         i++;
     }
@@ -81,43 +84,73 @@ int get_next_pos(int *arr, int num)
     return (i);
 }
 
+
+int lar_elem(int *arr)
+{
+    int i = 1;
+    int max = arr[0];
+    while (i < 7)
+    {
+        if (arr[i + 1] > arr[i] && max < arr[i + 1])
+            max = arr[i + 1];
+        i++;
+    }
+    return (max);
+}
+
+int lar_pos(int *arr)
+{
+    int i = 0;
+    int max = lar_elem(arr);
+    while (i < 7)
+    {
+        if (arr[i] == max)
+            break;
+        i++;
+    }
+    return (i);
+}
+
 void fill_res(int *arr, int *lis, int *res, int *pos)
 {
-    int li;
-    int i;
-    int l_po;
-    int p;
-
-    i = 1;
-    li = get_li_pos(arr);
-    res[0] = arr[li];
-    l_po = pos[li];
-    while (i < 6)
+    int max_pos = lar_pos(lis);
+    int i = 1;
+    res[0] = arr[max_pos];
+    int tmp = arr[max_pos];
+    while (i < 4)
     {
-        res[i] = arr[l_po];
-        p = get_next_pos(arr, arr[l_po]);
-        l_po = pos[p];
+        int j = 0;
+        while (j < 7)
+        {
+            if (arr[j] > tmp)
+            {
+                tmp = arr[j];
+                break;
+            }
+            j++;
+        }
+        res[i] = tmp;
         i++;
     }
 }
 
 int main()
 {
-    int arr[] = {0,4,12,2,10,6,9,13,11,7,15};
-    int lis[] = {1,1,1,1,1,1,1,1,1,1,1};
-    int pos[] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+    int arr[] = {5,3,11,8,1,100,2};
+    int lis[] = {1,1,1,1,1,1,1};
+    int pos[] = {-1,-1,-1,-1,-1,-1,-1};
     int *res;
     int i;
 
-    res = malloc(sizeof(int) * 6);
+    res = malloc(sizeof(int) * 4);
     if (!res)
         return (0);
     find_lis(arr, lis, pos);
     fill_res(arr,lis,res,pos);
     i = 0;
-    while (i < 6)
+    while (i < 4)
     {
-        // printf("index:%d ==> %d and pos is %d\n",i,lis[i],pos[i]);
+        // printf("index:%d ==> %d\n",i,lis[i]);
         printf("%d\n",res[i]);
         i++;
     }
