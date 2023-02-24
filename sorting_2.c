@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/22 20:43:32 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/24 18:32:32 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,39 +121,41 @@ int get_next_pos(int *arr, int num, int size)
     return (i);
 }
 
+int     next_gre(t_vars *vars, int tmp)
+{
+    int i;
+
+    i = vars->li_pos;
+    while (i < vars->size)
+    {
+        if (vars->tab[i] > tmp)
+            break;
+        i++;
+        if (i == vars->size)
+            i = 0;
+    }
+    return (vars->tab[i]);
+}
+
 void    fill_res(t_vars *vars)
 {
     int i;
-    // int tmp;
-    // int j;
+    int tmp;
 
     i = 1;
-    vars->li = get_lis(vars->lis, vars->size);
+    vars->li_len = get_lis(vars->lis, vars->size);
     vars->li_pos = get_li_pos(vars->lis, vars->size);
-    vars->res = (int *) malloc(sizeof(int) * vars->li);
+    vars->res = (int *) malloc(sizeof(int) * vars->li_len);
     if (!vars->res)
         return ;
-    printf("li_pos %d\n",vars->li_pos);
-    printf("li %d\n",vars->li);
-    // stoped here retrun the res to push to b elem not belong to it
-    // int i;
-    // int l_po;
-    // int p;
-
-    // i = 1;
-    // vars->res = (int *) malloc(sizeof(int) * vars->li);
-    // if (!vars->res)
-    //     return ;
-    // vars->li_pos = get_li_pos(vars->lis, vars->size);
-    // vars->res[0] = vars->tab[vars->li_pos];
-    // l_po = vars->pos[vars->li_pos];
-    // while (i < vars->li)
-    // {
-    //     vars->res[i] = vars->tab[l_po];
-    //     p = get_next_pos(vars->tab, vars->tab[l_po], vars->size);
-    //     l_po = vars->pos[p];
-    //     i++;
-    // }
+    vars->res[0] = vars->tab[vars->li_pos];
+    tmp = vars->res[0];
+    while (i < vars->li_len)
+    {
+        vars->res[i] = next_gre(vars, tmp);
+        tmp = vars->res[i];
+        i++;
+    }
 }
 
 void    find_lis(t_vars *vars)
@@ -168,7 +170,7 @@ int     is_existe(t_vars *vars, int n, int *arr)
     int i;
 
     i = 0;
-    while (i < vars->li)
+    while (i < vars->li_len)
     {
         if (arr[i] == n)
             return (1);
@@ -195,27 +197,6 @@ void    start_sorting(t_vars *vars)
     }
 }
 
-// void    min_to_head(t_vars *vars)
-// {
-//     t_list *head;
-//     int i;
-
-//     i = 0;
-//     head = vars->stack_a;
-//     while (i <= vars->size / 2)
-//     {
-//         if (min_pos(head) == 0)
-//             break;
-//         if (min_pos(head) > vars->size / 2)
-//             rra(&vars->stack_a);
-//         if (min_pos(head) <= vars->size / 2)
-//             ra(&vars->stack_a);
-//         head = vars->stack_a;
-//         i++;   
-//     }
-    
-// }
-
 void    sort_more_five(t_vars *vars)
 {
     vars->size = ft_lstsize(vars->stack_a);
@@ -224,7 +205,7 @@ void    sort_more_five(t_vars *vars)
     start_sorting(vars);
     int i = 0;
     printf("---------------------\n");
-    while (i < vars->li)
+    while (i < vars->li_len)
     {
         printf("%d\n",vars->res[i]);
         i++;
