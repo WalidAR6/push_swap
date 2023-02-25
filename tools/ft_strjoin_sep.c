@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:39:16 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/21 01:29:29 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:33:26 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ char	*ft_strjoin_sep(char *s1, char *s2, char *sep)
 	while (s2[++j])
 		p[i + x + j] = s2[j];
 	p[i + x + j] = 0;
-	return (p);
+	return (free(s1), p);
 }

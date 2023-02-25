@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/21 16:45:55 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/25 20:09:54 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void    fill_stack(t_vars *vars)
 char    **join_args(t_vars *vars, char **av)
 {
     int i;
+    char **res;
 
     i = 1;
     vars->args = NULL;
@@ -38,7 +39,8 @@ char    **join_args(t_vars *vars, char **av)
         vars->args = ft_strjoin_sep(vars->args, av[i], " ");
         i++;
     }
-    return (ft_split(vars->args, ' '));
+    res = ft_split(vars->args, ' ');
+    return (free(vars->args), res);
 }
 
 void    validate_args(t_vars *vars)
@@ -99,7 +101,6 @@ void    dup_num(t_vars *vars)
         exit(1);
     }
 }
-
 
 int main(int ac, char **av)
 {

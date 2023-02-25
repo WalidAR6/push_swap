@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/24 18:32:32 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/25 20:12:27 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ int     is_existe(t_vars *vars, int n, int *arr)
     return (0);
 }
 
-void    start_sorting(t_vars *vars)
+void    not_belong_b(t_vars *vars)
 {
     t_list  *head;
     int     j;
@@ -197,18 +197,30 @@ void    start_sorting(t_vars *vars)
     }
 }
 
+void    tabs_to_cmp(t_vars *vars)
+{
+    
+}
+
+void    num_moves_to_pa(t_vars *vars)
+{
+    tabs_to_cmp(vars);
+}
+
 void    sort_more_five(t_vars *vars)
 {
     vars->size = ft_lstsize(vars->stack_a);
     list_element(vars);
     find_lis(vars);
-    start_sorting(vars);
-    int i = 0;
-    printf("---------------------\n");
-    while (i < vars->li_len)
-    {
-        printf("%d\n",vars->res[i]);
-        i++;
-    }
-    printf("---------------------\n");
+    not_belong_b(vars);
+    num_moves_to_pa(vars);
+    
+    // int i = 0;
+    // printf("---------------------\n");
+    // while (i < vars->li_len)
+    // {
+    //     printf("%d\n",vars->res[i]);
+    //     i++;
+    // }
+    // printf("---------------------\n");
 }
