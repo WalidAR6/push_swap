@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/25 20:09:54 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:06:44 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int main(int ac, char **av)
         while (vars.stack_b)
         {
             printf("%d\n",vars.stack_b->content);
+            printf("index --> %d\n",vars.stack_b->index);
             vars.stack_b = vars.stack_b->next;
         }
     }

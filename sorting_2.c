@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/25 20:12:27 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:37:25 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    fill_tab(t_vars *vars)
 }
 
 void     list_element(t_vars *vars)
-{   
+{
     vars->tab = (int *) malloc(sizeof(int) * vars->size);
     if (!vars->tab)
         return ;
@@ -197,14 +197,37 @@ void    not_belong_b(t_vars *vars)
     }
 }
 
-void    tabs_to_cmp(t_vars *vars)
+int     moves_num(t_vars *vars, int n, int index)
 {
+    (void)vars;
+    (void)n;
+    (void)index;
     
+    return (0);
 }
 
-void    num_moves_to_pa(t_vars *vars)
+void    calculate_num_moves(t_vars *vars)
 {
-    tabs_to_cmp(vars);
+    t_list  *head;
+    int i;
+
+    i = 0;
+    head = vars->stack_b;
+    while (head)
+    {
+        if (i == (ft_lstsize(vars->stack_b) / 2) + 1)
+        {
+            if (ft_lstsize(vars->stack_b) % 2 == 0)
+                i = -i + 2;
+            else                
+                i = -i + 1;
+        }
+        head->index = i;
+        head->num_moves = moves_num(vars, head->content, head->index);
+        head = head->next;
+        i++;
+    }
+        
 }
 
 void    sort_more_five(t_vars *vars)
@@ -213,13 +236,12 @@ void    sort_more_five(t_vars *vars)
     list_element(vars);
     find_lis(vars);
     not_belong_b(vars);
-    num_moves_to_pa(vars);
-    
+    calculate_num_moves(vars);
     // int i = 0;
     // printf("---------------------\n");
-    // while (i < vars->li_len)
+    // while (i < ft_lstsize(vars->stack_b))
     // {
-    //     printf("%d\n",vars->res[i]);
+    //     printf("%d\n",vars->stack_b->index);
     //     i++;
     // }
     // printf("---------------------\n");

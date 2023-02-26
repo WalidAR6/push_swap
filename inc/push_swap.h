@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/24 16:38:39 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:15:20 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 typedef struct s_list
 {
     int     content;
+    int     num_moves; 
+    int     index;
     struct  s_list *next;
 }               t_list;
 
