@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/27 15:14:19 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:38:00 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ int     moves_num(t_vars *vars, int n, int index)
     t_list *head;
     int max;
     int res;
-
+    
     head = vars->stack_a;
     max = lar_elem(head);
     index_stack_a_elem(vars);
@@ -268,20 +268,34 @@ void    calculate_num_moves(t_vars *vars)
     }
 }
 
+int    min_of_moves(t_list *vars)
+{
+    t_list  *head;
+    int     min;
+
+    head = vars;
+    min = head->num_moves;
+    while (head->next)
+    {
+        if (head->num_moves > head->next->num_moves && min > head->next->num_moves)
+            min = head->next->num_moves;
+        head = head->next;
+    }
+    return (min);
+}
+
 void    sort_more_five(t_vars *vars)
 {
     t_list *head;
     int i;
 
-    i = 0;
     vars->size = ft_lstsize(vars->stack_a);
     list_element(vars);
     find_lis(vars);
     not_belong_b(vars);
-    pa(&vars->stack_a, &vars->stack_b);
     calculate_num_moves(vars);
-    // pa(&vars->stack_a, &vars->stack_b);
     head = vars->stack_b;
+    i = min_of_moves(head);
     
     
     
