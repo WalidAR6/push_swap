@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/26 21:37:25 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:14:19 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,13 +197,58 @@ void    not_belong_b(t_vars *vars)
     }
 }
 
+int    index_stack_elem(t_list *vars, int i)
+{
+    if (i == (ft_lstsize(vars) / 2) + 1)
+    {
+        if (ft_lstsize(vars) % 2 == 0)
+            i = -i + 2;
+        else 
+            i = -i + 1;       
+    }
+    return (i);
+}
+
+void    index_stack_a_elem(t_vars *vars)
+{
+    t_list  *head;
+    int i;
+
+    i = 0;
+    head = vars->stack_a;
+    while (head)
+    {
+        i = index_stack_elem(vars->stack_a, i);
+        head->index = i;
+        head = head->next;
+        i++;
+    }
+}
+
 int     moves_num(t_vars *vars, int n, int index)
 {
-    (void)vars;
-    (void)n;
-    (void)index;
-    
-    return (0);
+    t_list *head;
+    int max;
+    int res;
+
+    head = vars->stack_a;
+    max = lar_elem(head);
+    index_stack_a_elem(vars);
+    while (head)
+    {
+        if (n < head->content && max > head->content)
+        {
+            max = head->content;
+            res = head->index;
+        }
+        head = head->next;
+    }
+    if ( res < 0)
+        res = -res;
+    if ( index < 0)
+        index = -index;
+    res = res + index;
+    return (res);
 }
 
 void    calculate_num_moves(t_vars *vars)
@@ -215,28 +260,31 @@ void    calculate_num_moves(t_vars *vars)
     head = vars->stack_b;
     while (head)
     {
-        if (i == (ft_lstsize(vars->stack_b) / 2) + 1)
-        {
-            if (ft_lstsize(vars->stack_b) % 2 == 0)
-                i = -i + 2;
-            else                
-                i = -i + 1;
-        }
+        i = index_stack_elem(vars->stack_b, i);
         head->index = i;
         head->num_moves = moves_num(vars, head->content, head->index);
         head = head->next;
         i++;
     }
-        
 }
 
 void    sort_more_five(t_vars *vars)
 {
+    t_list *head;
+    int i;
+
+    i = 0;
     vars->size = ft_lstsize(vars->stack_a);
     list_element(vars);
     find_lis(vars);
     not_belong_b(vars);
+    pa(&vars->stack_a, &vars->stack_b);
     calculate_num_moves(vars);
+    // pa(&vars->stack_a, &vars->stack_b);
+    head = vars->stack_b;
+    
+    
+    
     // int i = 0;
     // printf("---------------------\n");
     // while (i < ft_lstsize(vars->stack_b))
