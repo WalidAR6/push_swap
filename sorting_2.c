@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/27 20:38:00 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/28 19:41:11 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,13 +233,14 @@ int     moves_num(t_vars *vars, int n, int index)
     
     head = vars->stack_a;
     max = lar_elem(head);
-    index_stack_a_elem(vars);
     while (head)
     {
         if (n < head->content && max > head->content)
         {
             max = head->content;
+            printf("%d\n",max);
             res = head->index;
+            
         }
         head = head->next;
     }
@@ -258,6 +259,7 @@ void    calculate_num_moves(t_vars *vars)
 
     i = 0;
     head = vars->stack_b;
+    index_stack_a_elem(vars);
     while (head)
     {
         i = index_stack_elem(vars->stack_b, i);
@@ -284,18 +286,47 @@ int    min_of_moves(t_list *vars)
     return (min);
 }
 
+int     min_of_moves_pos(t_list *vars)
+{
+    int i;
+    t_list  *head;
+    
+    i = 0;
+    head = vars;
+    while (head)
+    {
+        if (head->num_moves == min_of_moves(head))
+            break;
+        i++;
+    }
+     return (i);   
+}
+
 void    sort_more_five(t_vars *vars)
 {
     t_list *head;
-    int i;
+    // int i;
 
     vars->size = ft_lstsize(vars->stack_a);
     list_element(vars);
     find_lis(vars);
     not_belong_b(vars);
-    calculate_num_moves(vars);
     head = vars->stack_b;
-    i = min_of_moves(head);
+    calculate_num_moves(vars);
+    while (head->next)
+    {
+        if (min_of_moves_pos(head) != 0)
+        {
+            
+        }
+        
+        pa(&vars->stack_a, &vars->stack_b);
+        calculate_num_moves(vars);
+        head = vars->stack_b;  
+    }
+    
+    // calculate_num_moves(vars);
+    // pa(&vars->stack_a, &vars->stack_b);
     
     
     

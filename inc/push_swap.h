@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/26 19:15:20 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:38:21 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_vars
     int         *res;
     int         li_len;
     int         li_pos;
+    int         min_lar;
 }           t_vars;
 
 t_list	*ft_lstnew(int content);
