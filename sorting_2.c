@@ -6,11 +6,31 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/28 19:41:11 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/01 19:03:01 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/push_swap.h"
+void    printlist(t_vars *vars)
+{
+    t_list *tmp;
+    tmp = vars->stack_a;
+    printf("\n------------------------------------------------------\n");
+    while(tmp)
+    {
+        printf(" [%d] ", tmp->content);
+        tmp = tmp->next;
+    }
+    printf("\n------------------------------------------------------\n");
+    tmp = vars->stack_b;
+    while(tmp)
+    {
+        printf(" [%d] ", tmp->content);
+        tmp = tmp->next;
+    }
+    printf("\n------------------------------------------------------\n");
+    
+}
 
 void    fill_tab(t_vars *vars)
 {
@@ -204,7 +224,7 @@ int    index_stack_elem(t_list *vars, int i)
         if (ft_lstsize(vars) % 2 == 0)
             i = -i + 2;
         else 
-            i = -i + 1;       
+            i = -i + 1;      
     }
     return (i);
 }
@@ -228,19 +248,17 @@ void    index_stack_a_elem(t_vars *vars)
 int     moves_num(t_vars *vars, int n, int index)
 {
     t_list *head;
-    int max;
     int res;
+    int     max;
     
     head = vars->stack_a;
     max = lar_elem(head);
     while (head)
     {
-        if (n < head->content && max > head->content)
+        if (n < head->content && max >= head->content)
         {
             max = head->content;
-            printf("%d\n",max);
             res = head->index;
-            
         }
         head = head->next;
     }
@@ -297,45 +315,134 @@ int     min_of_moves_pos(t_list *vars)
     {
         if (head->num_moves == min_of_moves(head))
             break;
+        head = head->next;
         i++;
     }
-     return (i);   
+    return (i);   
+}
+
+void    elem_min_greater(t_vars *vars, int n)
+{
+    t_list *head_a;
+
+    head_a = vars->stack_a;
+    vars->min_lar = lar_elem(head_a);
+    while (head_a)
+    {
+        if (n < head_a->content && vars->min_lar >= head_a->content)
+        {
+            vars->min_lar = head_a->content;
+            printf("minmax --> %d\n",vars->min_lar);
+            printf("n --> %d\n",n);
+
+        }
+        head_a = head_a->next;
+    }
+}
+
+int     get_min_lar_pos(t_vars *vars)
+{
+    int i;
+    t_list  *head;
+    
+    i = 0;
+    head = vars->stack_a;
+    while (head)
+    {
+        if (head->content == vars->min_lar)
+            break;
+        head = head->next;
+        i++;
+    }
+    return (i);
+}
+
+void    stack_a_to_top(t_vars *vars)
+{
+    t_list *head;
+    int i;
+
+    i = 0;
+    head = vars->stack_a;
+    while (i < ft_lstsize(head))
+    {
+        if (get_min_lar_pos(vars) == 0)
+            break;
+        else if (get_min_lar_pos(vars) > ft_lstsize(head) / 2)
+            rra(&vars->stack_a);
+        else if (get_min_lar_pos(vars) <=ft_lstsize(head) / 2)
+            ra(&vars->stack_a);
+        head = vars->stack_a;
+        i++;
+    }
+    
+}
+
+void    move_elem_to_top(t_vars *vars, int n)
+{
+    t_list *head_a;
+    t_list *head_b;
+    
+    head_a = vars->stack_a;
+    head_b = vars->stack_b;
+    elem_min_greater(vars, n);
+    while (head_b)
+    {
+        if (min_of_moves_pos(head_b) == 0)
+        {
+            stack_a_to_top(vars);
+            pa(&vars->stack_a, &vars->stack_b);
+            break;
+        }
+        else if (min_of_moves_pos(head_b) > ft_lstsize(head_b) / 2)
+            rrb(&vars->stack_b);
+        else if (min_of_moves_pos(head_b) <= ft_lstsize(head_b) / 2)
+        {
+            puts("ok");
+            rb(&vars->stack_b);
+        }
+        head_b = vars->stack_b;
+    }
+    
+}
+
+void    push_min_to_top(t_vars *vars)
+{
+    t_list *head;
+    int i;
+
+    i = 0;
+    head = vars->stack_a;
+    while (i < ft_lstsize(head))
+    {
+        if (min_pos(head) == 0)
+            break;
+        else if (min_pos(head) > ft_lstsize(head) / 2)
+            rra(&vars->stack_a);
+        else if (min_pos(head) <= ft_lstsize(head) / 2)
+            ra(&vars->stack_a);
+        head = vars->stack_a;
+        i++;
+    }
+    
 }
 
 void    sort_more_five(t_vars *vars)
 {
     t_list *head;
-    // int i;
-
+    
     vars->size = ft_lstsize(vars->stack_a);
     list_element(vars);
     find_lis(vars);
     not_belong_b(vars);
-    head = vars->stack_b;
     calculate_num_moves(vars);
-    while (head->next)
+    head = vars->stack_b;
+    while (head)
     {
-        if (min_of_moves_pos(head) != 0)
-        {
-            
-        }
-        
-        pa(&vars->stack_a, &vars->stack_b);
+        printlist(vars);
+        move_elem_to_top(vars, head->content);
         calculate_num_moves(vars);
-        head = vars->stack_b;  
+        head = vars->stack_b;
     }
-    
-    // calculate_num_moves(vars);
-    // pa(&vars->stack_a, &vars->stack_b);
-    
-    
-    
-    // int i = 0;
-    // printf("---------------------\n");
-    // while (i < ft_lstsize(vars->stack_b))
-    // {
-    //     printf("%d\n",vars->stack_b->index);
-    //     i++;
-    // }
-    // printf("---------------------\n");
+    push_min_to_top(vars);
 }
