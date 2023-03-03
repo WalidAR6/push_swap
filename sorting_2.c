@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/01 19:03:01 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:49:12 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,7 +304,7 @@ int    min_of_moves(t_list *vars)
     return (min);
 }
 
-int     min_of_moves_pos(t_list *vars)
+int     min_of_moves_pos(t_list *vars) /////////////////////////////////////////
 {
     int i;
     t_list  *head;
@@ -332,15 +332,13 @@ void    elem_min_greater(t_vars *vars, int n)
         if (n < head_a->content && vars->min_lar >= head_a->content)
         {
             vars->min_lar = head_a->content;
-            printf("minmax --> %d\n",vars->min_lar);
-            printf("n --> %d\n",n);
 
         }
         head_a = head_a->next;
     }
 }
 
-int     get_min_lar_pos(t_vars *vars)
+int     get_min_lar_pos(t_vars *vars) ////////////////////////////////////////
 {
     int i;
     t_list  *head;
@@ -357,7 +355,7 @@ int     get_min_lar_pos(t_vars *vars)
     return (i);
 }
 
-void    stack_a_to_top(t_vars *vars)
+void    stack_a_to_top(t_vars *vars) ////////////////////
 {
     t_list *head;
     int i;
@@ -378,18 +376,18 @@ void    stack_a_to_top(t_vars *vars)
     
 }
 
-void    move_elem_to_top(t_vars *vars, int n)
+void    move_elem_to_top(t_vars *vars) /////////////////////////////
 {
     t_list *head_a;
     t_list *head_b;
     
     head_a = vars->stack_a;
     head_b = vars->stack_b;
-    elem_min_greater(vars, n);
     while (head_b)
     {
         if (min_of_moves_pos(head_b) == 0)
         {
+            elem_min_greater(vars, head_b->content);
             stack_a_to_top(vars);
             pa(&vars->stack_a, &vars->stack_b);
             break;
@@ -397,10 +395,7 @@ void    move_elem_to_top(t_vars *vars, int n)
         else if (min_of_moves_pos(head_b) > ft_lstsize(head_b) / 2)
             rrb(&vars->stack_b);
         else if (min_of_moves_pos(head_b) <= ft_lstsize(head_b) / 2)
-        {
-            puts("ok");
             rb(&vars->stack_b);
-        }
         head_b = vars->stack_b;
     }
     
@@ -439,8 +434,8 @@ void    sort_more_five(t_vars *vars)
     head = vars->stack_b;
     while (head)
     {
-        printlist(vars);
-        move_elem_to_top(vars, head->content);
+        // printlist(vars);
+        move_elem_to_top(vars);
         calculate_num_moves(vars);
         head = vars->stack_b;
     }
