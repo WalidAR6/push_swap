@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/04 16:34:49 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:19:29 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,6 +373,7 @@ void    stack_a_to_top(t_vars *vars) ////////////////////
         head = vars->stack_a;
         i++;
     }
+    
 }
 
 void    move_elem_to_top(t_vars *vars) /////////////////////////////

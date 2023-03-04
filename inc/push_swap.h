@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/04 16:32:02 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:44:05 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void    fill_list(t_vars *vars, int l);
 char	*ft_strjoin_sep(char *s1, char *s2, char *sep);
 char	**ft_split(char const *s, char c);
 int     ft_lstsize(t_list *lst);
-void    sa(t_list **stack_a);
-void    sb(t_list **stack_b);
-void    ss(t_list **stack_a, t_list **stack_b);
+void    sa(t_list **stack_a, int index);
+void    sb(t_list **stack_b, int index);
+void    ss(t_list **stack_a, t_list **stack_b, int index);
 void    pb(t_list **stack_a, t_list **stack_b);
 void    pa(t_list **stack_a, t_list **stack_b);
 void    rra(t_list **stack_a, int idnex);

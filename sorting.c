@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:27:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/04 16:33:04 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:44:50 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,18 @@ void    sort_three(t_vars *vars)
     max = max_pos(vars->stack_a);
     min = min_pos(vars->stack_a);
     if (min == 1 && max == 2)
-        sa(&vars->stack_a);
+        sa(&vars->stack_a, 0);
     else if (min == 2 && max == 1)
         rra(&vars->stack_a, 0);
     else if (min == 2 && max == 0)
     {
         ra(&vars->stack_a, 0);
-        sa(&vars->stack_a);
+        sa(&vars->stack_a, 0);
     }
     else if (min == 0 && max == 1)
     {
         rra(&vars->stack_a, 0);
-        sa(&vars->stack_a);
+        sa(&vars->stack_a, 0);
     }
     else if ((min == 2 && max == 0) || (min == 1 && max == 0))
         ra(&vars->stack_a, 0);
