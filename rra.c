@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:41:40 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/17 11:04:43 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:30:43 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list  *before_last(t_list *list)
     return (list);      
 }
 
-void    rra(t_list **stack_a)
+void    rra(t_list **stack_a, int index)
 {
     t_list  *lst;
     t_list  *head;
@@ -39,5 +39,6 @@ void    rra(t_list **stack_a)
     lst->next = head;
     tmp->next = NULL;
     (*stack_a) = lst;
-    write(1, "rra\n", 4);
+    if (index == 0)
+        write(1, "rra\n", 4);
 }

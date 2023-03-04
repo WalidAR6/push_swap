@@ -6,13 +6,13 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:49:53 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/17 11:02:55 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:29:35 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/push_swap.h"
 
-void    rb(t_list **stack_b)
+void    rb(t_list **stack_b, int index)
 {
     t_list *lst;
     t_list *head;
@@ -24,5 +24,6 @@ void    rb(t_list **stack_b)
     lst->next = tmp;
     tmp->next = NULL;
     (*stack_b) = head;
-    write(1, "rb\n", 3);
+    if (index == 0)
+        write(1, "rb\n", 3);
 }

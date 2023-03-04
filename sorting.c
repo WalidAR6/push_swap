@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:27:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/02/25 18:41:36 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:33:04 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,19 +89,19 @@ void    sort_three(t_vars *vars)
     if (min == 1 && max == 2)
         sa(&vars->stack_a);
     else if (min == 2 && max == 1)
-        rra(&vars->stack_a);
+        rra(&vars->stack_a, 0);
     else if (min == 2 && max == 0)
     {
-        ra(&vars->stack_a);
+        ra(&vars->stack_a, 0);
         sa(&vars->stack_a);
     }
     else if (min == 0 && max == 1)
     {
-        rra(&vars->stack_a);
+        rra(&vars->stack_a, 0);
         sa(&vars->stack_a);
     }
     else if ((min == 2 && max == 0) || (min == 1 && max == 0))
-        ra(&vars->stack_a);
+        ra(&vars->stack_a, 0);
 }
 
 
@@ -119,22 +119,22 @@ void    sort_till_five(t_vars *vars)
         if (min_pos(head) > ft_lstsize(head) / 2)
         {
             if (min_pos(head) == ft_lstsize(head) - 1)
-                rra(&vars->stack_a);
+                rra(&vars->stack_a, 0);
             else if (min_pos(head) == ft_lstsize(head) - 2)
             {
-                rra(&vars->stack_a);
-                rra(&vars->stack_a);
+                rra(&vars->stack_a, 0);
+                rra(&vars->stack_a, 0);
             }
         }
         else if (min_pos(head) <= ft_lstsize(head) / 2)
         {
             if (min_pos(head) == ft_lstsize(head) / 2)
             {
-                ra(&vars->stack_a);
-                ra(&vars->stack_a);
+                ra(&vars->stack_a, 0);
+                ra(&vars->stack_a, 0);
             }
             else if (min_pos(head) == (ft_lstsize(head) / 2) - 1)
-                ra(&vars->stack_a);
+                ra(&vars->stack_a, 0);
         }
         pb(&vars->stack_a,&vars->stack_b);
         head = vars->stack_a;

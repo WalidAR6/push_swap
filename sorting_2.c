@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/03 10:49:12 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:34:49 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ void    not_belong_b(t_vars *vars)
     while (j < vars->size)
     {
         if (is_existe(vars, head->content, vars->res))
-            ra(&vars->stack_a);
+            ra(&vars->stack_a, 0);
         else
             pb(&vars->stack_a, &vars->stack_b);
         head = vars->stack_a;
@@ -367,20 +367,19 @@ void    stack_a_to_top(t_vars *vars) ////////////////////
         if (get_min_lar_pos(vars) == 0)
             break;
         else if (get_min_lar_pos(vars) > ft_lstsize(head) / 2)
-            rra(&vars->stack_a);
+            rra(&vars->stack_a, 0);
         else if (get_min_lar_pos(vars) <=ft_lstsize(head) / 2)
-            ra(&vars->stack_a);
+            ra(&vars->stack_a, 0);
         head = vars->stack_a;
         i++;
     }
-    
 }
 
 void    move_elem_to_top(t_vars *vars) /////////////////////////////
 {
     t_list *head_a;
     t_list *head_b;
-    
+
     head_a = vars->stack_a;
     head_b = vars->stack_b;
     while (head_b)
@@ -393,9 +392,9 @@ void    move_elem_to_top(t_vars *vars) /////////////////////////////
             break;
         }
         else if (min_of_moves_pos(head_b) > ft_lstsize(head_b) / 2)
-            rrb(&vars->stack_b);
+            rrb(&vars->stack_b, 0);
         else if (min_of_moves_pos(head_b) <= ft_lstsize(head_b) / 2)
-            rb(&vars->stack_b);
+            rb(&vars->stack_b, 0);
         head_b = vars->stack_b;
     }
     
@@ -413,9 +412,9 @@ void    push_min_to_top(t_vars *vars)
         if (min_pos(head) == 0)
             break;
         else if (min_pos(head) > ft_lstsize(head) / 2)
-            rra(&vars->stack_a);
+            rra(&vars->stack_a, 0);
         else if (min_pos(head) <= ft_lstsize(head) / 2)
-            ra(&vars->stack_a);
+            ra(&vars->stack_a, 0);
         head = vars->stack_a;
         i++;
     }
