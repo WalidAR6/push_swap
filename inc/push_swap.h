@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/06 21:00:41 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:37:39 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ char	*ft_strnstr(const char *str, const char *look, size_t n);
 char	*ft_strstr(const char *str, const char *look);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 int     ft_strcmp(const char *s1, const char *s2);
+char    **join_args(t_vars *vars, char **av);
+int     is_sorted(t_vars *vars);
+void    validate_args(t_vars *vars);
+void    fill_stack(t_vars *vars);
+void    dup_num(t_vars *vars);
 void    fill_list(t_vars *vars, int l);
 char	*ft_strjoin_sep(char *s1, char *s2, char *sep);
 char	**ft_split(char const *s, char c);

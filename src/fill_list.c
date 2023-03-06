@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:07:32 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/06 21:04:29 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:16:11 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,18 @@ void    fill_list(t_vars *vars, int l)
         ft_lstadd_back(&vars->stack_a, new);
     }
 }
- 
+
+void    fill_stack(t_vars *vars)
+{
+    int l;
+    int i;
+
+    i = 0;
+    vars->counter = 0;
+    while (vars->s_args[i])
+    {
+        l = ft_atoi(vars->s_args[i]);
+        fill_list(vars, l);
+        i++;
+    }   
+}

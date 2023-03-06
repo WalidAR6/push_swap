@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:27:37 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/06 21:05:20 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:43:11 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int    low_elem(t_list *vars)
         vars = vars->next;
     }
     return (min);
-        
 }
 
 int     min_pos(t_list  *vars)
@@ -77,72 +76,6 @@ int     max_pos(t_list  *vars)
         head = head->next;
     }
     return (pos);
-}
-
-void    sort_three(t_vars *vars)
-{
-    int max;
-    int min;
-
-    max = max_pos(vars->stack_a);
-    min = min_pos(vars->stack_a);
-    if (min == 1 && max == 2)
-        sa(&vars->stack_a, 0);
-    else if (min == 2 && max == 1)
-        rra(&vars->stack_a, 0);
-    else if (min == 2 && max == 0)
-    {
-        ra(&vars->stack_a, 0);
-        sa(&vars->stack_a, 0);
-    }
-    else if (min == 0 && max == 1)
-    {
-        rra(&vars->stack_a, 0);
-        sa(&vars->stack_a, 0);
-    }
-    else if ((min == 2 && max == 0) || (min == 1 && max == 0))
-        ra(&vars->stack_a, 0);
-}
-
-
-void    sort_till_five(t_vars *vars)
-{
-    t_list  *head;
-    int size;
-    int i;
-
-    i = 3;
-    head = vars->stack_a;
-    size = ft_lstsize(head);
-    while (i < size)
-    {
-        if (min_pos(head) > ft_lstsize(head) / 2)
-        {
-            if (min_pos(head) == ft_lstsize(head) - 1)
-                rra(&vars->stack_a, 0);
-            else if (min_pos(head) == ft_lstsize(head) - 2)
-            {
-                rra(&vars->stack_a, 0);
-                rra(&vars->stack_a, 0);
-            }
-        }
-        else if (min_pos(head) <= ft_lstsize(head) / 2)
-        {
-            if (min_pos(head) == ft_lstsize(head) / 2)
-            {
-                ra(&vars->stack_a, 0);
-                ra(&vars->stack_a, 0);
-            }
-            else if (min_pos(head) == (ft_lstsize(head) / 2) - 1)
-                ra(&vars->stack_a, 0);
-        }
-        pb(&vars->stack_a,&vars->stack_b);
-        head = vars->stack_a;
-        i++;
-    }
-    sort_three(vars);
-    pa(&vars->stack_a,&vars->stack_b);
-    pa(&vars->stack_a,&vars->stack_b);
 }
 
 void    ft_sorting(t_vars *vars)

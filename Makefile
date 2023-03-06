@@ -34,7 +34,11 @@ SRCS = src/main\
 		src/rb\
 		src/rr\
 		src/sorting\
-		src/sorting_2
+		src/sorting_2\
+		src/parser\
+		src/sort_three\
+		src/sort_five
+
 
 OBJ = $(SRCS:=.o)
 

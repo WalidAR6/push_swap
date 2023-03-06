@@ -6,30 +6,31 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:30:49 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/06 21:05:16 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:44:18 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-void    printlist(t_vars *vars)
-{
-    t_list *tmp;
-    tmp = vars->stack_a;
-    printf("\n------------------------------------------------------\n");
-    while(tmp)
-    {
-        printf(" [%d] ", tmp->content);
-        tmp = tmp->next;
-    }
-    printf("\n------------------------------------------------------\n");
-    tmp = vars->stack_b;
-    while(tmp)
-    {
-        printf(" [%d] ", tmp->content);
-        tmp = tmp->next;
-    }
-    printf("\n------------------------------------------------------\n");
-}
+
+// void    printlist(t_vars *vars)
+// {
+//     t_list *tmp;
+//     tmp = vars->stack_a;
+//     printf("\n------------------------------------------------------\n");
+//     while(tmp)
+//     {
+//         printf(" [%d] ", tmp->content);
+//         tmp = tmp->next;
+//     }
+//     printf("\n------------------------------------------------------\n");
+//     tmp = vars->stack_b;
+//     while(tmp)
+//     {
+//         printf(" [%d] ", tmp->content);
+//         tmp = tmp->next;
+//     }
+//     printf("\n------------------------------------------------------\n");
+// }
 
 void    fill_tab(t_vars *vars)
 {
