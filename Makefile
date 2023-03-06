@@ -4,37 +4,37 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS = main\
-		tools/ft_lstnew\
-		tools/ft_strdup\
-		tools/ft_strlen\
-		tools/ft_strlcpy\
-		tools/ft_lstadd_back\
-		tools/ft_lstadd_front\
-		tools/ft_lstlast\
-		tools/ft_isdigit\
-		tools/ft_strnstr\
-		tools/ft_strstr\
-		tools/ft_strncmp\
-		tools/ft_strcmp\
-		tools/ft_atoi\
-		fill_list\
-		tools/ft_strjoin_sep\
-		tools/ft_split\
-		tools/ft_lstsize\
-		sa\
-		sb\
-		ss\
-		pb\
-		pa\
-		rra\
-		rrb\
-		rrr\
-		ra\
-		rb\
-		rr\
-		sorting\
-		sorting_2
+SRCS = src/main\
+		src/libft/ft_lstnew\
+		src/libft/ft_strdup\
+		src/libft/ft_strlen\
+		src/libft/ft_strlcpy\
+		src/libft/ft_lstadd_back\
+		src/libft/ft_lstadd_front\
+		src/libft/ft_lstlast\
+		src/libft/ft_isdigit\
+		src/libft/ft_strnstr\
+		src/libft/ft_strstr\
+		src/libft/ft_strncmp\
+		src/libft/ft_strcmp\
+		src/libft/ft_atoi\
+		src/fill_list\
+		src/libft/ft_strjoin_sep\
+		src/libft/ft_split\
+		src/libft/ft_lstsize\
+		src/sa\
+		src/sb\
+		src/ss\
+		src/pb\
+		src/pa\
+		src/rra\
+		src/rrb\
+		src/rrr\
+		src/ra\
+		src/rb\
+		src/rr\
+		src/sorting\
+		src/sorting_2
 
 OBJ = $(SRCS:=.o)
 

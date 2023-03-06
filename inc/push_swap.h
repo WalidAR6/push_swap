@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/04 19:44:05 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:00:41 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 
 typedef struct s_list
 {
-    int     content;
-    int     num_moves; 
-    int     index;
-    struct  s_list *next;
+    int             content;
+    int             num_moves; 
+    int             index;
+    struct s_list   *next;
 }               t_list;
 
 typedef struct s_vars
@@ -79,7 +79,7 @@ void    sort_three(t_vars *vars);
 void    sort_more_five(t_vars *vars);
 int     max_pos(t_list  *vars);
 int     min_pos(t_list  *vars);
-int    low_elem(t_list *vars);
-int    lar_elem(t_list *vars);
+int     low_elem(t_list *vars);
+int     lar_elem(t_list *vars);
 
 #endif
