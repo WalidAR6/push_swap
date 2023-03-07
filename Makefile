@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 
 SRCS = src/main\
 		src/libft/ft_lstnew\
@@ -41,6 +41,7 @@ SRCS = src/main\
 		src/fill_res\
 		src/get_lis\
 		src/last_sort\
+		src/ft_free\
 		src/num_moves_calc
 
 

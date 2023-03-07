@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:16:23 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/07 13:52:39 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:20:49 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	**join_args(t_vars *vars, char **av)
 {
 	int		i;
-	char	**res;
 
 	i = 1;
 	vars->args = NULL;
@@ -24,8 +23,7 @@ char	**join_args(t_vars *vars, char **av)
 		vars->args = ft_strjoin_sep(vars->args, av[i], " ");
 		i++;
 	}
-	res = ft_split(vars->args, ' ');
-	return (free(vars->args), res);
+	return (ft_split(vars->args, ' '));
 }
 
 void	validate_args(t_vars *vars)
@@ -73,7 +71,7 @@ void	dup_num(t_vars *vars)
 		{
 			if (head->content == tmp->content)
 			{
-				write(2, "duplicated", 11);
+				write(2, "Error, duplicated numbers\n", 26);
 				exit(1);
 			}
 			tmp = tmp->next;
@@ -82,7 +80,7 @@ void	dup_num(t_vars *vars)
 	}
 	if (is_sorted(vars) == 0)
 	{
-		write(2, "sorted", 7);
+		write(2, "stack is sorted\n", 16);
 		exit(1);
 	}
 }

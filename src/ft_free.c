@@ -1,31 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/07 18:31:12 by waraissi         ###   ########.fr       */
+/*   Created: 2023/03/07 18:23:16 by waraissi          #+#    #+#             */
+/*   Updated: 2023/03/07 18:33:36 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	main(int ac, char **av)
+void	free_double(t_vars *vars)
 {
-	t_vars	vars;
+	int	i;
 
-	if (ac > 1)
+	i = 0;
+	while (vars->s_args[i])
 	{
-		vars.s_args = join_args(&vars, av);
-		validate_args(&vars);
-		fill_stack(&vars);
-		if (ft_lstsize(vars.stack_a) == 1)
-			return (0);
-		dup_num(&vars);
-		ft_sorting(&vars);
-		ft_free_args(&vars);
+		free(vars->s_args[i]);
+		i++;
 	}
-	return (0);
+	free(vars->s_args);
+}
+
+void	free_list(t_vars *vars)
+{
+	t_list *tmp;
+	t_list *head;
+
+	tmp = vars->stack_a;
+	head = vars->stack_a;
+	while (head)
+	{
+		head = head->next;
+		vars->stack_a = head;
+		free(tmp);
+		tmp = head;
+	}
+}
+
+void	ft_free_args(t_vars *vars)
+{
+	free_double(vars);
+	free(vars->lis);
+	free(vars->res);
+	free_list(vars);
 }

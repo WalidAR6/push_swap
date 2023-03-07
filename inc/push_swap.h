@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/07 14:01:43 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:31:21 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,8 @@ int		get_min_lar_pos(t_vars *vars);
 void	push_min_to_top(t_vars *vars);
 int		is_existe(t_vars *vars, int n, int *arr);
 void	not_belong_b(t_vars *vars);
+void	ft_free_args(t_vars *vars);
+void	free_list(t_vars *vars);
+void	free_double(t_vars *vars);
 
 #endif
