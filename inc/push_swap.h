@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/06 22:37:39 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:46:05 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,22 @@ int     max_pos(t_list  *vars);
 int     min_pos(t_list  *vars);
 int     low_elem(t_list *vars);
 int     lar_elem(t_list *vars);
+void     list_element(t_vars *vars);
+void    fill_tab(t_vars *vars);
+void    find_lis(t_vars *vars);
+void    pos_lis(t_vars *vars);
+void    fill_lis(t_vars *vars);
+void    fill_res(t_vars *vars);
+int     next_gre(t_vars *vars, int tmp);
+int get_li_pos(int *arr, int size);
+int get_lis(int *arr, int size);
+void    calculate_num_moves(t_vars *vars);
+void    index_stack_a_elem(t_vars *vars);
+int     moves_num(t_vars *vars, int n, int index);
+void    move_elem_to_top(t_vars *vars);
+int     get_min_lar_pos(t_vars *vars);
+void    push_min_to_top(t_vars *vars);
+int     is_existe(t_vars *vars, int n, int *arr);
+void    not_belong_b(t_vars *vars);
 
 #endif

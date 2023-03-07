@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 SRCS = src/main\
 		src/libft/ft_lstnew\
@@ -34,10 +34,15 @@ SRCS = src/main\
 		src/rb\
 		src/rr\
 		src/sorting\
-		src/sorting_2\
+		src/sort_more_five\
 		src/parser\
 		src/sort_three\
-		src/sort_five
+		src/sort_five\
+		src/fill_res\
+		src/get_lis\
+		src/last_sort\
+		src/num_moves_calc
+
 
 
 OBJ = $(SRCS:=.o)
@@ -48,7 +53,7 @@ all: $(NAME)
 	$(CC) $(FLAGS) -c $< -o $@ -g
 
 $(NAME):$(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
