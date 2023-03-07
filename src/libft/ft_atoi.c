@@ -6,28 +6,31 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:27:15 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/06 21:02:41 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:03:34 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
-void	print_err()
-{
-	write(2, "Error you passed the int limit\n", 32);
-    exit(1);
-}
 
 void	after_num(char *str, int i)
 {
 	while (str[i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
-    	{
-    	    printf("err\n");
-    	    exit(1);
-    	}
+		{
+			printf("err\n");
+			exit(1);
+		}
 		i++;
+	}
+}
+
+void	check_condition(int res, int sign)
+{
+	if (res * sign > INT_MAX || res * sign < INT_MIN)
+	{
+		write(2, "Error you passed the int limit\n", 32);
+		exit(1);
 	}
 }
 
@@ -35,7 +38,7 @@ int	ft_atoi(const char *str)
 {
 	int		i;
 	int		sign;
-	ssize_t		res;
+	ssize_t	res;
 
 	i = 0;
 	sign = 1;
@@ -53,10 +56,9 @@ int	ft_atoi(const char *str)
 		res = res * 10 + str[i] - '0';
 		i++;
 		if (res * sign > INT_MAX || res * sign < INT_MIN)
-			break;
+			break ;
 	}
-    after_num((char *)str, i);
-	if (res * sign > INT_MAX || res * sign < INT_MIN)
-		print_err();
+	after_num((char *)str, i);
+	check_condition(res, sign);
 	return ((int)res * sign);
 }

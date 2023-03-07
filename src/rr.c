@@ -6,16 +6,16 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:57:13 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/06 21:04:51 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:51:01 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void    rr(t_list **stack_a, t_list **stack_b, int index)
+void	rr(t_list **stack_a, t_list **stack_b, int index)
 {
-    ra(stack_a, index);
-    rb(stack_b, index);
-    if (index == 1)
-        write(1, "rr\n", 3);
+	ra(stack_a, index);
+	rb(stack_b, index);
+	if (index == 1)
+		write(1, "rr\n", 3);
 }
