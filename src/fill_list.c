@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:07:32 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/07 13:47:46 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:25:07 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	fill_stack(t_vars *vars)
 	vars->counter = 0;
 	while (vars->s_args[i])
 	{
-		l = ft_atoi(vars->s_args[i]);
+		l = ft_atoi(vars, vars->s_args[i]);
 		fill_list(vars, l);
 		i++;
 	}

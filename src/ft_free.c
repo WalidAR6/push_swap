@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:23:16 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/07 18:33:36 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:43:15 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	free_list(t_vars *vars)
 void	ft_free_args(t_vars *vars)
 {
 	free_double(vars);
+	//should free here
 	free(vars->lis);
 	free(vars->res);
 	free_list(vars);

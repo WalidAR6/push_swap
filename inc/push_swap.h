@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:09:27 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/07 18:31:21 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:27:07 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_atoi(const char *str);
-void	ft_isdigit(char *str);
+int		ft_atoi(t_vars *vars, const char *str);
+void	ft_isdigit(t_vars *vars, char *str);
 char	*ft_strnstr(const char *str, const char *look, size_t n);
 char	*ft_strstr(const char *str, const char *look);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);

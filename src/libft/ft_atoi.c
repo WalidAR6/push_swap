@@ -6,35 +6,42 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:27:15 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/07 14:03:34 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:39:33 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	after_num(char *str, int i)
+void	after_num(t_vars *vars, char *str, int i)
 {
 	while (str[i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
 		{
 			printf("err\n");
+			if (vars->stack_a)
+				free_list(vars);
+			free_double(vars);
 			exit(1);
 		}
 		i++;
 	}
 }
 
-void	check_condition(int res, int sign)
+void	check_condition(t_vars *vars, int res, int sign)
 {
 	if (res * sign > INT_MAX || res * sign < INT_MIN)
 	{
 		write(2, "Error you passed the int limit\n", 32);
+		if (vars->stack_a)
+			free_list(vars);
+		free_double(vars);
+		while(1);
 		exit(1);
 	}
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(t_vars *vars, const char *str)
 {
 	int		i;
 	int		sign;
@@ -58,7 +65,7 @@ int	ft_atoi(const char *str)
 		if (res * sign > INT_MAX || res * sign < INT_MIN)
 			break ;
 	}
-	after_num((char *)str, i);
-	check_condition(res, sign);
+	after_num(vars, (char *)str, i);
+	check_condition(vars, res, sign);
 	return ((int)res * sign);
 }

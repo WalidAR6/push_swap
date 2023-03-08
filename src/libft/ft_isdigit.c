@@ -6,13 +6,13 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:41:48 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/07 18:17:48 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:33:52 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	ft_isdigit(char *str)
+void	ft_isdigit(t_vars *vars, char *str)
 {
 	int	i;
 
@@ -24,6 +24,7 @@ void	ft_isdigit(char *str)
 			if (str[i + 1] == '-' || str[i + 1] == '+' || str[i + 1] == '\0')
 			{
 				write(2, "Error, you enter a wrong elements in your args\n", 48);
+				free_double(vars);
 				exit(1);
 			}
 		}
@@ -31,6 +32,7 @@ void	ft_isdigit(char *str)
 			&& str[i] != '-' && str[i] != '+')
 		{
 			write(2, "Error, you enter a wrong elements in your args\n", 48);
+			free_double(vars);
 			exit(1);
 		}
 		i++;
