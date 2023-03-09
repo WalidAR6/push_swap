@@ -6,11 +6,11 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/08 12:40:59 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:35:40 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "inc/push_swap.h"
 
 int	main(int ac, char **av)
 {

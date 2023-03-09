@@ -4,7 +4,7 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS = src/main\
+SRCS = main\
 		src/libft/ft_lstnew\
 		src/libft/ft_strdup\
 		src/libft/ft_strlen\
