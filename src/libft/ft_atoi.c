@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:27:15 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/08 12:39:33 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:04:51 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	after_num(t_vars *vars, char *str, int i)
 	{
 		if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
 		{
-			printf("err\n");
+			write(2, "Error, you enter a wrong elements in your args\n", 48);
 			if (vars->stack_a)
 				free_list(vars);
 			free_double(vars);
@@ -28,7 +28,7 @@ void	after_num(t_vars *vars, char *str, int i)
 	}
 }
 
-void	check_condition(t_vars *vars, int res, int sign)
+void	check_condition(t_vars *vars, ssize_t res, int sign)
 {
 	if (res * sign > INT_MAX || res * sign < INT_MIN)
 	{
@@ -36,7 +36,6 @@ void	check_condition(t_vars *vars, int res, int sign)
 		if (vars->stack_a)
 			free_list(vars);
 		free_double(vars);
-		while(1);
 		exit(1);
 	}
 }
