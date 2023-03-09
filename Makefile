@@ -51,7 +51,7 @@ OBJ = $(SRCS:=.o)
 all: $(NAME)
 
 %.o:%.c inc/push_swap.h
-	$(CC) $(FLAGS) -c $< -o $@ -g
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME):$(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
