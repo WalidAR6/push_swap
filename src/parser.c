@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:16:23 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/09 16:35:44 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:14:10 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	dup_num(t_vars *vars)
 		{
 			if (head->content == tmp->content)
 			{
-				write(2, "Error\n", 7);
+				write(2, "Error\n", 8);
 				free_double(vars);
 				free_list(vars);
 				exit(1);

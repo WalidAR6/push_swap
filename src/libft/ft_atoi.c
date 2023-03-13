@@ -6,27 +6,11 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:27:15 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/09 16:36:15 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:49:02 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
-void	after_num(t_vars *vars, char *str, int i)
-{
-	while (str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
-		{
-			write(2, "Error\n", 7);
-			if (vars->stack_a)
-				free_list(vars);
-			free_double(vars);
-			exit(1);
-		}
-		i++;
-	}
-}
 
 void	check_condition(t_vars *vars, ssize_t res, int sign)
 {
@@ -64,7 +48,6 @@ int	ft_atoi(t_vars *vars, const char *str)
 		if (res * sign > INT_MAX || res * sign < INT_MIN)
 			break ;
 	}
-	after_num(vars, (char *)str, i);
 	check_condition(vars, res, sign);
 	return ((int)res * sign);
 }
