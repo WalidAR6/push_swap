@@ -6,11 +6,16 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/13 17:13:54 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:38:41 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/push_swap.h"
+
+void	init_args(t_vars *vars)
+{
+	vars->stack_a = NULL;
+}
 
 int	main(int ac, char **av)
 {
@@ -18,6 +23,7 @@ int	main(int ac, char **av)
 
 	if (ac > 1)
 	{
+		init_args(&vars);
 		vars.s_args = join_args(&vars, av);
 		if (!vars.s_args[0])
 			return (0);

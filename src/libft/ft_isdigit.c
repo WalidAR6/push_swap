@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:41:48 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/13 17:12:50 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:10:55 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_sign(t_vars *vars, char c)
 {
 	if (c == '-' || c == '+' || c == '\0')
 	{
-		write(2, "Error\n", 8);
+		write(2, "Error\n", 7);
 		free_double(vars);
 		exit(1);
 	}
@@ -26,7 +26,7 @@ void	after(t_vars *vars, char c)
 {
 	if ((c <= '0' || c >= '9') && c != '\0')
 	{
-		write(2, "Error\n", 8);
+		write(2, "Error\n", 7);
 		free_double(vars);
 		exit(1);
 	}
@@ -46,7 +46,7 @@ void	ft_isdigit(t_vars *vars, char *str)
 		else if (!(str[i] >= 48 && str[i] <= 57)
 			&& str[i] != '-' && str[i] != '+')
 		{
-			write(2, "Error\n", 8);
+			write(2, "Error\n", 7);
 			free_double(vars);
 			exit(1);
 		}
