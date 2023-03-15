@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:23:16 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/15 16:19:02 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:07:16 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	free_list(t_vars *vars)
 
 	tmp = vars->stack_a;
 	head = vars->stack_a;
-	printf("%p\n",tmp->next->next->next);
 	while (head)
 	{
 		head = head->next;

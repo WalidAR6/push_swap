@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:16:23 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/15 16:11:53 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:07:52 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	check_sorted(t_vars *vars)
 	{
 		free_double(vars);
 		free_list(vars);
-		exit(1);
+		exit(0);
 	}
 }
 
@@ -84,7 +84,7 @@ void	dup_num(t_vars *vars)
 				write(2, "Error\n", 7);
 				free_double(vars);
 				free_list(vars);
-				exit(1);
+				exit(0);
 			}
 			tmp = tmp->next;
 		}
