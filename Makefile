@@ -5,23 +5,23 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror 
 
 SRCS = main\
-		src/libft/ft_lstnew\
-		src/libft/ft_strdup\
-		src/libft/ft_strlen\
-		src/libft/ft_strlcpy\
-		src/libft/ft_lstadd_back\
-		src/libft/ft_lstadd_front\
-		src/libft/ft_lstlast\
-		src/libft/ft_isdigit\
-		src/libft/ft_strnstr\
-		src/libft/ft_strstr\
-		src/libft/ft_strncmp\
-		src/libft/ft_strcmp\
-		src/libft/ft_atoi\
+		src/utils/ft_lstnew\
+		src/utils/ft_strdup\
+		src/utils/ft_strlen\
+		src/utils/ft_strlcpy\
+		src/utils/ft_lstadd_back\
+		src/utils/ft_lstadd_front\
+		src/utils/ft_lstlast\
+		src/utils/ft_isdigit\
+		src/utils/ft_strnstr\
+		src/utils/ft_strstr\
+		src/utils/ft_strncmp\
+		src/utils/ft_strcmp\
+		src/utils/ft_atoi\
 		src/fill_list\
-		src/libft/ft_strjoin_sep\
-		src/libft/ft_split\
-		src/libft/ft_lstsize\
+		src/utils/ft_strjoin_sep\
+		src/utils/ft_split\
+		src/utils/ft_lstsize\
 		src/sa\
 		src/sb\
 		src/ss\
