@@ -6,20 +6,39 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:16:23 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/16 15:26:26 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:29:46 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-char	** join_args(t_vars *vars, char **av)
+int	only_space(char *str)
 {
-	int		i;
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != '	')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+char	**join_args(t_vars *vars, char **av)
+{
+	int	i;
 
 	i = 1;
 	vars->args = NULL;
 	while (av[i])
 	{
+		if (!ft_strlen(av[i]) || !only_space(av[i]))
+		{
+			write(2, "Error\n", 7);
+			exit(1);
+		}
 		vars->args = ft_strjoin_sep(vars->args, av[i], " ");
 		i++;
 	}

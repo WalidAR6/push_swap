@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 22:00:39 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/16 13:09:43 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:17:12 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int	main(int ac, char **av)
 		init_args(&vars);
 		vars.s_args = join_args(&vars, av);
 		if (!vars.s_args[0])
+		{
+			write(2, "Error\n", 7);
 			return (0);
+		}
 		validate_args(&vars);
 		fill_stack(&vars);
 		if (ft_lstsize(vars.stack_a) == 1)
