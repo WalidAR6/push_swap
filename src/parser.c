@@ -6,13 +6,13 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:16:23 by waraissi          #+#    #+#             */
-/*   Updated: 2023/03/15 19:07:52 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:26:26 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-char	**join_args(t_vars *vars, char **av)
+char	** join_args(t_vars *vars, char **av)
 {
 	int		i;
 
